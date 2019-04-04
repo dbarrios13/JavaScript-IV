@@ -23,7 +23,7 @@ class GameObject {
     }
     destroy () {
         return `${this.name} was removed from the game.`;
-    };
+    }
 }
 
 /*
@@ -40,7 +40,7 @@ class CharacterStats extends GameObject {
     }
     takeDamage (){
         return `${this.name} took damage.`;
-    };
+    }
 }
 
 /*
