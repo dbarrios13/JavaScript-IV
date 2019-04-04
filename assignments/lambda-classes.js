@@ -25,7 +25,7 @@ class Instructor extends Person {
 		console.log(`${student.name} receives a perfect score on ${subject}`);
     }
     grading(student){
-        return  student.grade + Math.floor(Math.random() * 21) -10;
+        student.grade = student.grade + Math.floor(Math.random() *21) -10;
     }
 }
 
@@ -50,11 +50,10 @@ class Student extends Person {
 		console.log(`${this.name} has begun sprint challenge on ${subject}.`);
     }
     graduate () {
-        if(this.grade > 70){
-            console.log(`Congratulations ${this.name}, you are graduating!`);
-        } else {
-            Instructor.grading(this.name);
-        }
+        while (this.grade < 70) {
+            michael.grading(this);
+        } 
+        console.log(`Congratulations ${this.name}, you are graduating!`);
     }
 }
 
@@ -181,3 +180,10 @@ console.log(andy.PRAssignment('Rest APIs'));
 console.log(kevin.sprintChallenge('React'));
 console.log(stanley.standUp('web19_stanley'));
 console.log(toby.debugsCode(kevin, 'Javascript'));
+console.log(jim.grading(andy));
+console.log(stanley.grading(pam));
+console.log(dwight.grading(kevin));
+console.log(pam.graduate());
+console.log(andy.graduate());
+console.log(kevin.graduate());
+
