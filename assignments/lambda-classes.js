@@ -25,9 +25,8 @@ class Instructor extends Person {
 		console.log(`${student.name} receives a perfect score on ${subject}`);
     }
     grading(student){
-        
+        return  student.grade + Math.floor(Math.random() * 21) -10;
     }
-    
 }
 
 class Student extends Person {
@@ -49,7 +48,14 @@ class Student extends Person {
 	}
 	sprintChallenge (subject) {
 		console.log(`${this.name} has begun sprint challenge on ${subject}.`);
-	}
+    }
+    graduate () {
+        if(this.grade > 70){
+            console.log(`Congratulations ${this.name}, you are graduating!`);
+        } else {
+            Instructor.grading(this.name);
+        }
+    }
 }
 
 class ProjectManager extends Instructor {
@@ -65,3 +71,113 @@ class ProjectManager extends Instructor {
 		console.log(`${this.name} debugs ${student.name}’s code on ${subject}`);
 	}
 }
+
+const michael = new Instructor ({
+	name: 'Michael',
+	location: 'Scranton',
+	age: 35,
+	gender: 'male',
+	favLanguage: 'React',
+	specialty: 'Front-end',
+	catchPhrase: 'That’s what she said'
+});
+
+const jim = new Instructor ({
+	name: 'Jim',
+	location: 'Scranton',
+	age: 28,
+	gender: 'male',
+	favLanguage: 'Java',
+	specialty: 'Android Apps',
+	catchPhrase: 'Computer says no'
+});
+
+const dwight = new Instructor ({
+	name: 'Dwight',
+	location: 'Scranton',
+	age: 31,
+	gender: 'male',
+	favLanguage: 'mySQL',
+	specialty: 'Back-end',
+	catchPhrase: 'Beats, bears, Battlestar galatica'
+});
+
+const pam = new Student ({
+	name: 'Pam',
+	location: 'Scranton',
+	age: 27,
+    gender: 'female',
+    grade: 90,
+    previousBackground: 'Receptionist, Sales Representative',
+    className: 'WEB19',
+    favSubjects: ['HTML', 'CSS/Less', 'Javascript']
+});
+
+const kevin = new Student ({
+	name: 'Kevin',
+	location: 'Scranton',
+	age: 35,
+    gender: 'male',
+    grade: 80,
+    previousBackground: 'Accountant',
+    className: 'WEB19',
+    favSubjects: ['APIs', 'React', 'Python']
+});
+
+const andy = new Student ({
+	name: 'Andy',
+	location: 'Scranton',
+	age: 25,
+    gender: 'male',
+    grade: 70,
+    previousBackground: 'Sales Representative',
+    className: 'AND6',
+    favSubjects: ['Rest API', 'HTTP Requests', 'XML']
+});
+
+const toby = new ProjectManager ({
+    name: 'Toby',
+	location: 'Scranton',
+	age: 37,
+    gender: 'male',
+    favLanguage: 'Javascript',
+	specialty: 'Front-end',
+    catchPhrase: `Homey don't play that!`,
+    gradClassName: 'WEB17',
+    favInstructor: 'Michael'
+});
+
+const angela = new ProjectManager ({
+    name: 'Angela',
+	location: 'Scranton',
+	age: 31,
+    gender: 'female',
+    favLanguage: 'MongoDB',
+	specialty: 'Back-end',
+    catchPhrase: 'You idiot',
+    gradClassName: 'WEB18',
+    favInstructor: 'Dwight'
+});
+
+const stanley = new ProjectManager ({
+    name: 'Stanley',
+	location: 'Scranton',
+	age: 43,
+    gender: 'male',
+    favLanguage: 'Java',
+	specialty: 'Java Backend Data',
+    catchPhrase: `You've been meatballed!`,
+    gradClassName: 'AND3',
+    favInstructor: 'Jim'
+});
+
+console.log(michael.speak());
+console.log(toby.speak());
+console.log(angela.speak());
+console.log(jim.demo('Java'));
+console.log(dwight.grade(pam, 'Java'));
+console.log(pam.listsSubjects());
+console.log(andy.PRAssignment('Rest APIs'));
+console.log(kevin.sprintChallenge('React'));
+console.log(stanley.standUp('web19_stanley'));
+console.log(toby.debugsCode(kevin, 'Javascript'));
